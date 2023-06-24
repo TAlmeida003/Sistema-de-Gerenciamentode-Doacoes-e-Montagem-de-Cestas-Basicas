@@ -1,16 +1,27 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+import ValidataUserInputInMainMenu
+import BasicBasketDonation
+from Item import Item
+import Stock
+import Report
 
 
-# Press the green button in the gutter to run the script.
+def open_option(user_choice_option: str = "", dict_items_stock: dict[str, Item] = None):
+
+    OPTION_ONE: str = "1"
+
+    if user_choice_option == OPTION_ONE:
+        BasicBasketDonation.start_donation(dict_items_stock)
+    else:
+        Report.inicialize_report(dict_items_stock)
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    dict_items: dict[str, Item] = Stock.create_dict_itens()
+    user_choice: str = ValidataUserInputInMainMenu.get_main_manu_entry()
+
+    while not ValidataUserInputInMainMenu.exit_main_menu_option(user_choice):
+        open_option(user_choice, dict_items)
+        user_choice: str = ValidataUserInputInMainMenu.get_main_manu_entry()
+
+    Report.final_report(dict_items)
