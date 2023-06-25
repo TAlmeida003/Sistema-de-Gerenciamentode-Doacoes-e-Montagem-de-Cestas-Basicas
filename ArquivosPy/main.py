@@ -5,8 +5,7 @@ import Stock
 import Report
 
 
-def open_option(user_choice_option: str = "", dict_items_stock: dict[str, Item] = None):
-
+def open_option(user_choice_option: str = "", dict_items_stock: dict[str, Item] = None) -> None:
     OPTION_ONE: str = "1"
 
     if user_choice_option == OPTION_ONE:

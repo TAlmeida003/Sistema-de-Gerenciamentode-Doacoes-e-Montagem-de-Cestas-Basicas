@@ -91,7 +91,7 @@ def print_out_report(dict_items: dict[str, Item] = None) -> None:
 
 
 def inicialize_report(dict_items: dict[str, Item] = None) -> None:
-    ScreenPrints.display_header("Relatorio das Doações")
+    ScreenPrints.display_header("Relatorio parcial")
     print_out_report(dict_items)
 
     input(" Pressione [ENTER] para retorna para o menu principal ".center(170, "-"))
@@ -99,7 +99,7 @@ def inicialize_report(dict_items: dict[str, Item] = None) -> None:
 
 
 def final_report(dict_items: dict[str, Item] = None) -> None:
-    ScreenPrints.display_header("Relatorio final do dia")
+    ScreenPrints.display_header("Relatorio final")
     print_out_report(dict_items)
 
     print(" Obrigado por usar esse programa!!! :) ".center(170, "-"))
