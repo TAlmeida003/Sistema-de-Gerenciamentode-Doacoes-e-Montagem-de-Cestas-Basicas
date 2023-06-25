@@ -12,7 +12,8 @@ def display_items_received(dict_items: dict[str, Item] = None) -> None:
     ScreenPrints.display_sub_title("Total de items recebidos")
 
     for item in dict_items:
-        line_string += f"| [ {dict_items[item].get_total_amount()} ] de {item} |   "
+        line_string += f"| [ {dict_items[item].get_total_amount()} ] {dict_items[item].get_unit_of_measurement()} " \
+                       f"de {item} |   "
 
         cont += 1
 
@@ -51,7 +52,7 @@ def display_items_left(dict_items: dict[str, Item] = None) -> None:
     for item in dict_items:
         line_string += f"| [ " \
                        f"{dict_items[item].calculate_the_amount_of_items_left_after(NUMBER_BASKET)} " \
-                       f"] de {item} |   "
+                       f"] {dict_items[item].get_unit_of_measurement()} de {item} |   "
 
         cont += 1
 
@@ -72,13 +73,13 @@ def display_information_basket(dict_items: dict[str, Item] = None):
     ScreenPrints.display_sub_title("Informações das cestas básicas")
 
     print(f"[ {Stock.get_number_basket(dict_items)} ]"
-          f" - Total de cesta feitas".center(SIZE_CENTER))
+          f" - Total de cesta".center(SIZE_CENTER))
     print("\n")
     print(f"[ {Stock.get_baskets_with_extra_item(dict_items)} ]"
-          f" - Total de cestas feitas com item extra".center(SIZE_CENTER))
+          f" - Total de cestas com item extra".center(SIZE_CENTER))
     print("\n")
     print(f"[ {Stock.get_baskets_without_extra_item(dict_items)} ]"
-          f" - Total de cestas feitas sem item extra".center(SIZE_CENTER))
+          f" - Total de cestas sem item extra".center(SIZE_CENTER))
     print("\n")
 
 

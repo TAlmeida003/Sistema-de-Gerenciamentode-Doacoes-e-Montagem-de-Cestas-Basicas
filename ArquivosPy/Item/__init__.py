@@ -43,6 +43,20 @@ class Item:
 
         return self.__total_amount__
 
+    def get_unit_of_measurement(self) -> str:
+        set_items_un: set[str] = {"EXTRATO DE TOMATE", "OUTROS", "MACARRÃO"}
+        item_in_L: str = "ÓLEO"
+        item_in_pct: str = "BOLACHA"
+
+        if self.__item_name__ == item_in_L:
+            return "l"
+        elif self.__item_name__ == item_in_pct:
+            return "pct"
+        elif self.__item_name__ in set_items_un:
+            return "un"
+        else:
+            return "Kg"
+
     def __repr__(self) -> str:
 
         return str(self.__dict__)
