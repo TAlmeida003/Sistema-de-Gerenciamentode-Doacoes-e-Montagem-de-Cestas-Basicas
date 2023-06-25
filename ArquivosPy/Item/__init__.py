@@ -9,16 +9,16 @@ class Item:
         self.__total_amount__: int = 0
         self.__quantity_in_baskets__: int = 0
 
-    def store_the_item(self, quantity: int = 0, type_person: int = 0) -> None:
+    def store_the_item(self, quantity: int = 0, type_person: str = "") -> None:
 
         self.__total_amount__ += quantity
         self.__quantity_in_baskets__ += self.__total_amount__ // self.__weight_in_the_basket__
 
         self.set_type_person(quantity, type_person)
 
-    def set_type_person(self, quantity: int = 0, type_person: int = 0):
+    def set_type_person(self, quantity: int = 0, type_person: str = ""):
 
-        if type_person == 1:
+        if type_person == "PF":
             self.__amount_per_individual__ += quantity
         else:
             self.__amount_per_legal_entity__ += quantity

@@ -54,14 +54,16 @@ def is_valid_type_of_donor(type_of_donor: str = "") -> bool:
         return False
 
 
-def get_type_of_donor() -> int:
+def get_type_of_donor() -> str:
 
     type_of_donor: str = ScreenPrints.get_display_type_of_donor()
 
     while not is_valid_type_of_donor(type_of_donor):
         type_of_donor = ScreenPrints.get_display_type_of_donor()
 
-    return int(type_of_donor)
+    list_type_person: list[str] = ["PF", "PJ"]
+
+    return list_type_person[int(type_of_donor) - 1]
 
 
 def check_donated_item(donated_item: str = "") -> None:

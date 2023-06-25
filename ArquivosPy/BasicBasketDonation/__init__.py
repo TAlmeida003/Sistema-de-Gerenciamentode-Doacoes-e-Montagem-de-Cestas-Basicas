@@ -12,7 +12,7 @@ def store_the_item(dict_item: dict[str, Item], donor: Donor = None) -> None:
 def register_donor() -> Donor:
 
     name_donor: str = ValidataDonorInformation.get_name_donor()
-    type_of_donor: int = ValidataDonorInformation.get_type_of_donor()
+    type_of_donor: str = ValidataDonorInformation.get_type_of_donor()
     donated_item: str = ValidataDonorInformation.get_donated_item()
     quantity_of_items: int = ValidataDonorInformation.get_quantity_of_items()
 

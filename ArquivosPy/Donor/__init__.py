@@ -3,9 +3,9 @@ from ArquivosPy.Donation import Donation
 
 class Donor:
 
-    def __init__(self, name_donor: str = "", type_of_donor: int = 0, donation: Donation = None) -> None:
+    def __init__(self, name_donor: str = "", type_of_donor: str = "", donation: Donation = None) -> None:
 
-        self.__type_of_donor__: int = type_of_donor
+        self.__type_of_donor__: str = type_of_donor
         self.__name_donor__: str = name_donor
         self.__donation__: Donation = donation
 
@@ -17,7 +17,7 @@ class Donor:
 
         return self.__name_donor__
 
-    def get_type_of_donor(self) -> int:
+    def get_type_of_donor(self) -> str:
 
         return self.__type_of_donor__
 
