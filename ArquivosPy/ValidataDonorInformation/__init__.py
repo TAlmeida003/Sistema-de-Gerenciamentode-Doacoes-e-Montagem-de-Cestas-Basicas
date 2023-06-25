@@ -82,14 +82,17 @@ def is_valid_donated_item(donated_item: str = "") -> bool:
         return False
 
 
-def get_donated_item() -> int:
+def get_donated_item() -> str:
 
     donated_item: str = ScreenPrints.get_display_donation_items()
 
     while not is_valid_donated_item(donated_item):
         donated_item = ScreenPrints.get_display_donation_items()
 
-    return int(donated_item)
+    list_of_items: list[str] = ["AÇÚCAR", "ARROZ", "CAFÉ", "EXTRATO DE TOMATE", "MACARRÃO", "BOLACHA",
+                                "ÓLEO", "FARINHA DE TRIGO", "FEIJÃO", "SAL", "OUTROS"]
+
+    return list_of_items[int(donated_item)]
 
 
 def check_quantity_of_items(quantity_of_items: int = 0) -> None:

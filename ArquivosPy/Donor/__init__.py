@@ -9,7 +9,7 @@ class Donor:
         self.__name_donor__: str = name_donor
         self.__donation__: Donation = donation
 
-    def add_donation(self, donated_item: int = 0, quantity_of_items: int = 0) -> None:
+    def add_donation(self, donated_item: str = "", quantity_of_items: int = 0) -> None:
 
         self.__donation__ = Donation(donated_item, quantity_of_items)
 

@@ -13,7 +13,7 @@ def register_donor() -> Donor:
 
     name_donor: str = ValidataDonorInformation.get_name_donor()
     type_of_donor: int = ValidataDonorInformation.get_type_of_donor()
-    donated_item: int = ValidataDonorInformation.get_donated_item()
+    donated_item: str = ValidataDonorInformation.get_donated_item()
     quantity_of_items: int = ValidataDonorInformation.get_quantity_of_items()
 
     donor: Donor = Donor(name_donor, type_of_donor)
