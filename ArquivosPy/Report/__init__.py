@@ -3,7 +3,13 @@ from ArquivosPy import ScreenPrints
 from ArquivosPy import Stock
 
 
-def display_items_received(dict_items: dict[str, Item] = None) -> None:
+def display_items_received(dict_items: dict[str, Item]) -> None:
+    """
+        Exibe os itens recebidos.
+
+        :param dict_items: Dict[str, Item] - Dicionário contendo os itens recebidos.
+        :return: None
+        """
     cont: int = 1
     line_string: str = ""
     SIZE_CENTER: int = 180
@@ -27,7 +33,13 @@ def display_items_received(dict_items: dict[str, Item] = None) -> None:
     print("\n")
 
 
-def display_items_in_type_person(dict_items: dict[str, Item] = None) -> None:
+def display_items_in_type_person(dict_items: dict[str, Item]) -> None:
+    """
+        Exibe os itens doados por tipo de pessoa (física ou jurídica).
+
+        :param dict_items: Dict[str, Item] - Dicionário contendo os itens doados.
+        :return: None
+    """
     type_individual, type_legal_entity = Stock.get_quantity_in_type_person(dict_items)
     SIZE_CENTER: int = 170
 
@@ -40,7 +52,13 @@ def display_items_in_type_person(dict_items: dict[str, Item] = None) -> None:
     print("\n")
 
 
-def display_items_left(dict_items: dict[str, Item] = None) -> None:
+def display_items_left(dict_items: dict[str, Item]) -> None:
+    """
+    Exibe os itens que sobraram após a montagem das cestas básicas.
+
+    :param dict_items: Dict[str, Item] - Dicionário contendo os itens do estoque.
+    :return: None
+    """
     cont: int = 1
     line_string: str = ""
 
@@ -67,7 +85,13 @@ def display_items_left(dict_items: dict[str, Item] = None) -> None:
     ScreenPrints.get_baseboard()
 
 
-def display_information_basket(dict_items: dict[str, Item] = None):
+def display_information_basket(dict_items: dict[str, Item]) -> None:
+    """
+    Exibe informações sobre as cestas básicas.
+
+    :param dict_items: Dict[str, Item] - Dicionário contendo os itens do estoque.
+    :return: None
+    """
     SIZE_CENTER: int = 170
 
     ScreenPrints.display_sub_title("Informações das cestas básicas")
@@ -83,14 +107,26 @@ def display_information_basket(dict_items: dict[str, Item] = None):
     print("\n")
 
 
-def print_out_report(dict_items: dict[str, Item] = None) -> None:
+def print_out_report(dict_items: dict[str, Item]) -> None:
+    """
+    Imprime o relatório com as informações sobre os itens recebidos, doados, cestas básicas e itens restantes.
+
+    :param dict_items: dict[str, Item] - Dicionário contendo os itens do estoque.
+    :return: None
+    """
     display_items_received(dict_items)
     display_items_in_type_person(dict_items)
     display_information_basket(dict_items)
     display_items_left(dict_items)
 
 
-def inicialize_report(dict_items: dict[str, Item] = None) -> None:
+def inicialize_report(dict_items: dict[str, Item]) -> None:
+    """
+    Inicializa o relatório parcial exibindo as informações sobre os itens recebidos, doados, cestas básicas e itens restantes.
+
+    :param dict_items:  dict[str, Item] - Dicionário contendo os itens do estoque.
+    :return: None
+    """
     ScreenPrints.display_header("Relatorio parcial")
     print_out_report(dict_items)
 
@@ -98,7 +134,13 @@ def inicialize_report(dict_items: dict[str, Item] = None) -> None:
     ScreenPrints.clear_prompt()
 
 
-def final_report(dict_items: dict[str, Item] = None) -> None:
+def final_report(dict_items: dict[str, Item]) -> None:
+    """
+    Imprime o relatório final com as informações sobre os itens recebidos, doados, cestas básicas e itens restantes.
+
+    :param dict_items: Dict[str, Item] - Dicionário contendo os itens do estoque.
+    :return: None
+    """
     ScreenPrints.display_header("Relatorio final")
     print_out_report(dict_items)
 
