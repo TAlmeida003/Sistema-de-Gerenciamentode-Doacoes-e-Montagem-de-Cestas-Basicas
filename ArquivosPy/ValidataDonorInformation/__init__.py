@@ -37,10 +37,9 @@ def get_name_donor() -> str:
 
 def check_type_of_donor(type_of_donor: str = "") -> None:
 
-    OPTION_ONE: str = "1"
-    OPTION_TWO: str = "2"
+    set_option: set[str] = {"1", "2"}
 
-    if (type_of_donor != OPTION_ONE) and (type_of_donor != OPTION_TWO):
+    if type_of_donor not in set_option:
         raise RuntimeError("OPÇÃO INVALIDA")
 
 
