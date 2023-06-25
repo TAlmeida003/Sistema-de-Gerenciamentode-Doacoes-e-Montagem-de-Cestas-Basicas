@@ -5,7 +5,11 @@ import Stock
 import Report
 
 
-def open_option(user_choice_option: str = "", dict_items_stock: dict[str, Item] = None) -> None:
+def open_option(user_choice_option: str, dict_items_stock: dict[str, Item]) -> None:
+    """
+    Procedimento para abrir a opção desejada pelo usuário.
+    :return: None
+    """
     OPTION_ONE: str = "1"
 
     if user_choice_option == OPTION_ONE:
