@@ -14,7 +14,6 @@ class Item:
         self.__amount_per_individual__: int = 0
         self.__amount_per_legal_entity__: int = 0
         self.__total_amount__: int = 0
-        self.__quantity_in_baskets__: int = 0
 
     def store_the_item(self, quantity: int, type_person: str) -> None:
         """
@@ -24,7 +23,6 @@ class Item:
         :return: None
         """
         self.__total_amount__ += quantity
-        self.__quantity_in_baskets__ += self.__total_amount__ // self.__weight_in_the_basket__
         self.set_type_person(quantity, type_person)
 
     def set_type_person(self, quantity: int, type_person: str):
@@ -45,6 +43,8 @@ class Item:
         :param number_basket: Integer - O número de cestos.
         :return: Integer - A quantidade de itens restantes.
         """
+        if self.__total_amount__ < number_basket:
+            return 0
         return self.__total_amount__ - number_basket * self.__weight_in_the_basket__
 
     def get_quantity_in_baskets(self) -> int:
@@ -52,7 +52,7 @@ class Item:
         Retorna a quantidade de itens nos cestos.
         :return: Integer - A quantidade de itens nos cestos.
         """
-        return self.__quantity_in_baskets__
+        return self.__total_amount__ // self.__weight_in_the_basket__
 
     def get_amount_per_individual(self) -> int:
         """
@@ -99,3 +99,14 @@ class Item:
         :return: String - Representação em string do objeto Item.
         """
         return str(self.__dict__)
+
+'''
+cesta = 3
+extra = 4
+cesta < extra:
+    :return  extra - extra
+else:
+cesta = 3
+extra = 1
+    return 0
+'''
