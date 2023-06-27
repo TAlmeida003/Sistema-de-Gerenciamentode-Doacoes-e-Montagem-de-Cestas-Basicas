@@ -10,7 +10,7 @@ def create_dict_itens() -> dict[str, Item]:
     SIZE_OF_LIST: int = 11
 
     dict_items: dict[str, Item] = dict()
-    weight_items_list: list[int] = [1, 4, 2, 2, 3, 1, 1, 1, 1, 4, 1, 1]
+    weight_items_list: list[int] = [1, 4, 2, 2, 3, 1, 1, 1, 4, 1, 1]
     list_of_items: list[str] = ["AÇÚCAR", "ARROZ", "CAFÉ", "EXTRATO DE TOMATE", "MACARRÃO", "BOLACHA",
                                 "ÓLEO", "FARINHA DE TRIGO", "FEIJÃO", "SAL", "OUTROS"]
 
@@ -28,13 +28,13 @@ def get_number_basket(dict_items: dict[str, Item]):
         :return: Integer - Número de cestas básicas.
         """
     KAY_SUGAR: str = "AÇÚCAR"
+    KAY_ITEM_EXTRA: str = "OUTROS"
 
     num_basket: int = dict_items[KAY_SUGAR].get_quantity_in_baskets()
 
     for kay_item in dict_items:
-        if dict_items[kay_item].get_quantity_in_baskets() < num_basket:
+        if (dict_items[kay_item].get_quantity_in_baskets() < num_basket) and (kay_item != KAY_ITEM_EXTRA):
             num_basket = dict_items[kay_item].get_quantity_in_baskets()
-
     return num_basket
 
 
