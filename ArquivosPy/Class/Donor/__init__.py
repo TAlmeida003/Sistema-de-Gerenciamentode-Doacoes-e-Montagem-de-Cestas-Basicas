@@ -1,4 +1,4 @@
-from ArquivosPy.Donation import Donation
+from ArquivosPy.Class.Donation import Donation
 
 
 class Donor:

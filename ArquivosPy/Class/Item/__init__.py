@@ -3,12 +3,13 @@ class Item:
     A classe Item tem o objetivo de representar um item, com características como nome, peso na cesta básica e
     quantidade de itens armazenados.
     """
-    def __init__(self, name: str, weight_in_the_basket: int) -> None:
+    def __init__(self, name: str, weight_in_the_basket: int, unit_of_measurement: str) -> None:
         """
         Inicializa um objeto Item recém-criado para representar os dados de um item.
         :param name: String - O nome do item.
         :param weight_in_the_basket: Integer - O peso do item na cesta básica.
         """
+        self.__unit_of_measurement__ = unit_of_measurement
         self.__item_name__ = name
         self.__weight_in_the_basket__: int = weight_in_the_basket
         self.__amount_per_individual__: int = 0
@@ -80,18 +81,7 @@ class Item:
         Retorna a unidade de medida do item com base em seu nome.
         :return: String - A unidade de medida do item.
         """
-        set_items_un: set[str] = {"EXTRATO DE TOMATE", "OUTROS", "MACARRÃO"}
-        item_in_L: str = "ÓLEO"
-        item_in_pct: str = "BOLACHA"
-
-        if self.__item_name__ == item_in_L:
-            return "l"
-        elif self.__item_name__ == item_in_pct:
-            return "pct"
-        elif self.__item_name__ in set_items_un:
-            return "un"
-        else:
-            return "kg"
+        return self.__unit_of_measurement__
 
     def __repr__(self) -> str:
         """
@@ -99,14 +89,3 @@ class Item:
         :return: String - Representação em string do objeto Item.
         """
         return str(self.__dict__)
-
-'''
-cesta = 3
-extra = 4
-cesta < extra:
-    :return  extra - extra
-else:
-cesta = 3
-extra = 1
-    return 0
-'''
