@@ -1,6 +1,6 @@
-from ArquivosPy import ValidataDonorInformation
-from ArquivosPy.Donor import Donor
-from ArquivosPy.Item import Item
+from ArquivosPy.Menu import NameMenu, TypeOfDonorMenu, DonatedItemMenu, QuantityOfItemsMenu
+from ArquivosPy.Class.Donor import Donor
+from ArquivosPy.Class.Item import Item
 
 
 def store_the_item(dict_item: dict[str, Item], donor: Donor) -> None:
@@ -19,10 +19,10 @@ def register_donor() -> Donor:
     Função para receber as informações do doador e criar um objeto para representá-lo no sistema.
     :return: Donor - Um objeto Donor que representa o doador no sistema.
     """
-    name_donor: str = ValidataDonorInformation.get_name_donor()
-    type_of_donor: str = ValidataDonorInformation.get_type_of_donor()
-    donated_item: str = ValidataDonorInformation.get_donated_item()
-    quantity_of_items: int = ValidataDonorInformation.get_quantity_of_items()
+    name_donor: str = NameMenu.inicialize()
+    type_of_donor: str = TypeOfDonorMenu.inicialize()
+    donated_item: str = DonatedItemMenu.inicialize()
+    quantity_of_items: int = QuantityOfItemsMenu.inicialize()
 
     donor: Donor = Donor(name_donor, type_of_donor)
     donor.add_donation(donated_item, quantity_of_items)
