@@ -1,10 +1,28 @@
-from ArquivosPy.Item import Item
+from ArquivosPy.Class.Item import Item
+
+
+def get_unit_of_measurement(item_name: str) -> str:
+    """
+    Retorna a unidade de medida do item com base em seu nome.
+    :return: String - A unidade de medida do item.
+    """
+    set_items_un: set[str] = {"EXTRATO DE TOMATE", "OUTROS", "MACARRÃO"}
+    item_in_L: str = "ÓLEO"
+    item_in_pct: str = "BOLACHA"
+
+    if item_name == item_in_L:
+        return "l"
+    elif item_name == item_in_pct:
+        return "pct"
+    elif item_name in set_items_un:
+        return "un"
+    else:
+        return "kg"
 
 
 def create_dict_itens() -> dict[str, Item]:
     """
     Cria e retorna um dicionário com os itens e suas informações.
-
     :return:Dict[str, Item] - Dicionário com os itens.
     """
     SIZE_OF_LIST: int = 11
@@ -15,7 +33,9 @@ def create_dict_itens() -> dict[str, Item]:
                                 "ÓLEO", "FARINHA DE TRIGO", "FEIJÃO", "SAL", "OUTROS"]
 
     for item in range(SIZE_OF_LIST):
-        dict_items[list_of_items[item]] = Item(list_of_items[item], weight_items_list[item])
+        dict_items[list_of_items[item]] = Item(list_of_items[item],
+                                               weight_items_list[item],
+                                               get_unit_of_measurement(list_of_items[item]))
 
     return dict_items
 
@@ -23,7 +43,6 @@ def create_dict_itens() -> dict[str, Item]:
 def get_number_basket(dict_items: dict[str, Item]):
     """
         Retorna o número de cestas básicas a serem montadas com base na quantidade de um determinado item.
-
         :param dict_items: Dict[str, Item] -Dicionário contendo os itens do estoque.
         :return: Integer - Número de cestas básicas.
         """
@@ -41,7 +60,6 @@ def get_number_basket(dict_items: dict[str, Item]):
 def get_quantity_in_type_person(dict_items: dict[str, Item]) -> tuple[int, int]:
     """
     Retorna a quantidade total de itens doados por tipo de pessoa (física ou jurídica).
-
     :param dict_items: Dict[str, Item] - Dicionário contendo os itens do estoque.
     :return: Tuple[int, int] -  Quantidade de itens doados por pessoa física e pessoa jurídica, respectivamente.
     """
@@ -58,7 +76,6 @@ def get_quantity_in_type_person(dict_items: dict[str, Item]) -> tuple[int, int]:
 def get_baskets_with_extra_item(dict_items: dict[str, Item]) -> int:
     """
     Retorna o número de cestas básicas que possuem um item extra.
-
     :param dict_items: dict[str, Item] - Dicionário contendo os itens do estoque.
     :return: Integer - Número de cestas básicas com item extra.
     """
@@ -75,7 +92,6 @@ def get_baskets_with_extra_item(dict_items: dict[str, Item]) -> int:
 def get_baskets_without_extra_item(dict_items: dict[str, Item]) -> int:
     """
     Retorna o número de cestas básicas que não possuem um item extra.
-
     :param dict_items: Dict[str, Item] - Dicionário contendo os itens do estoque.
     :return: Integer - Número de cestas básicas sem item extra.
     """
