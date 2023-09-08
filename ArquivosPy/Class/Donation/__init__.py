@@ -27,6 +27,9 @@ class Donation:
         """
         return self.__quantity_of_items__
 
+    def add_quantity(self, quantity: int):
+        self.__quantity_of_items__ += quantity
+
     def __repr__(self) -> str:
         """
         Retorna uma representação em string do objeto Donation.

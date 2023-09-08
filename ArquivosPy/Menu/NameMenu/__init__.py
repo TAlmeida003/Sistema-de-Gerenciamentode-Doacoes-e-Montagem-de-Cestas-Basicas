@@ -16,7 +16,7 @@ def check_name(name_donor: str) -> None:
         raise RuntimeError("O CAMPA NOME DO DOADOR ESTÁ VAZIO")
     elif NUMBER_OF_CHAR > CHAR_LIMIT:
         raise RuntimeError("O NOME INSERIDO NO CAMPO NOME ULTRAPASSOU OS 20 CARACTERES")
-    elif not name_donor.isalpha():
+    elif not name_donor.replace(" ", "").isalpha():
         raise RuntimeError("POR FAVOR NÃO INSIRA NÚMEROS NO CAMPO NOME DO DOADOR")
 
 

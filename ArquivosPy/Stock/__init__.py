@@ -7,13 +7,10 @@ def get_unit_of_measurement(item_name: str) -> str:
     :return: String - A unidade de medida do item.
     """
     set_items_un: set[str] = {"EXTRATO DE TOMATE", "OUTROS", "MACARRÃO"}
-    item_in_L: str = "ÓLEO"
-    item_in_pct: str = "BOLACHA"
+    dict_items: dict[str, str] = {"ÓLEO": "l", "BOLACHA": "pct"}
 
-    if item_name == item_in_L:
-        return "l"
-    elif item_name == item_in_pct:
-        return "pct"
+    if item_name in dict_items:
+        return dict_items[item_name]
     elif item_name in set_items_un:
         return "un"
     else:
@@ -33,8 +30,7 @@ def create_dict_itens() -> dict[str, Item]:
                                 "ÓLEO", "FARINHA DE TRIGO", "FEIJÃO", "SAL", "OUTROS"]
 
     for item in range(SIZE_OF_LIST):
-        dict_items[list_of_items[item]] = Item(list_of_items[item],
-                                               weight_items_list[item],
+        dict_items[list_of_items[item]] = Item(list_of_items[item], weight_items_list[item],
                                                get_unit_of_measurement(list_of_items[item]))
 
     return dict_items
@@ -57,20 +53,16 @@ def get_number_basket(dict_items: dict[str, Item]):
     return num_basket
 
 
-def get_quantity_in_type_person(dict_items: dict[str, Item]) -> tuple[int, int]:
-    """
-    Retorna a quantidade total de itens doados por tipo de pessoa (física ou jurídica).
-    :param dict_items: Dict[str, Item] - Dicionário contendo os itens do estoque.
-    :return: Tuple[int, int] -  Quantidade de itens doados por pessoa física e pessoa jurídica, respectivamente.
-    """
-    num_person_individual: int = 0
-    num_person_legal_entity: int = 0
+def get_quantity_donation_by_unit(unit_of_measurement: str, dict_items: dict[str, Item]) -> tuple[int, int]:
+    quantity_donation_individual: int = 0
+    quantity_donation_legal_entity: int = 0
 
-    for kay_item in dict_items:
-        num_person_individual += dict_items[kay_item].get_amount_per_individual()
-        num_person_legal_entity += dict_items[kay_item].get_amount_per_legal_entity()
+    for item in dict_items:
+        if dict_items[item].get_unit_of_measurement() == unit_of_measurement:
+            quantity_donation_individual += dict_items[item].get_amount_per_individual()
+            quantity_donation_legal_entity += dict_items[item].get_amount_per_legal_entity()
 
-    return num_person_individual, num_person_legal_entity
+    return quantity_donation_individual, quantity_donation_legal_entity
 
 
 def get_baskets_with_extra_item(dict_items: dict[str, Item]) -> int:

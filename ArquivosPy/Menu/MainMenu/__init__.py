@@ -1,18 +1,21 @@
-from ArquivosPy import ScreenPrints, BasicBasketDonation, Report
-from ArquivosPy.Class.Item import Item
+from ArquivosPy import ScreenPrints, BasicBasketDonation, Report, LogBook
+from ArquivosPy.Class.DataBase import DataBase
 
 
-def open_option(user_choice_option: str, dict_items_stock: dict[str, Item]) -> None:
+def open_option(user_choice_option: str, data_base: DataBase) -> None:
     """
     Procedimento para abrir a opção desejada pelo usuário.
     :return: None
     """
     OPTION_ONE: str = "1"
+    OPTION_TWO: str = "2"
 
     if user_choice_option == OPTION_ONE:
-        BasicBasketDonation.start_donation(dict_items_stock)
+        BasicBasketDonation.start_donation(data_base)
+    elif user_choice_option == OPTION_TWO:
+        Report.inicialize_report(data_base.get_dict_items())
     else:
-        Report.inicialize_report(dict_items_stock)
+        LogBook.inicialize(data_base.get_dict_donor())
 
 
 def exit_main_menu_option(user_choice: str) -> bool:
@@ -21,7 +24,7 @@ def exit_main_menu_option(user_choice: str) -> bool:
     :param user_choice: String - Opção selecionada pelo usuário.
     :return: Boolean - true se a opção for a de saída, false caso contrário.
     """
-    OPTION_EXIT: str = "3"
+    OPTION_EXIT: str = "4"
 
     if user_choice != OPTION_EXIT:
         return False
@@ -35,7 +38,7 @@ def check_option_main_menu(user_choice: str) -> None:
     :param user_choice: String - Opção selecionada pelo usuário.
     :raises RuntimeError: Se a opção selecionada for inválida.
     """
-    set_option: set[str] = {"1", "2", "3"}
+    set_option: set[str] = {"1", "2", "3", "4"}
 
     if user_choice not in set_option:
         raise RuntimeError("OPÇÃO INVALIDA")
@@ -64,11 +67,12 @@ def display_menu() -> None:
 
     ScreenPrints.display_header('MENU PRINCIPAL')
 
-    print(str("\n\n"), "[ 1 ] — INICIAR DOAÇÃO".center(SIZE_CENTER_TEXT))
-    print(str("\n\n\n"), "[ 2 ] — VISUALIZAR RELATORIO".center(SIZE_CENTER_TEXT))
-    print(str("\n\n\n"), "[ 3 ] — FECHA O PROGRAMA".center(SIZE_CENTER_TEXT))
+    ScreenPrints.get_display_option("1", "INICIAR DOAÇÃO")
+    ScreenPrints.get_display_option("2", "VISUALIZAR RELATORIO")
+    ScreenPrints.get_display_option("3", "LISTA DE DOADORES")
+    ScreenPrints.get_display_option("4", "FECHA O PROGRAMA")
 
-    print("\n", "\n", "\n", ("-=" * 40).center(SIZE_CENTER_TEXT))
+    print("\n" * 3, ("-=" * 40).center(SIZE_CENTER_TEXT))
     print(" " * 50, end="* ")
 
 

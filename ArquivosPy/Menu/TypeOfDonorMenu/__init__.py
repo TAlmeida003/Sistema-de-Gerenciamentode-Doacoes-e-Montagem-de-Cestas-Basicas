@@ -41,11 +41,10 @@ def display_type_person() -> None:
     SIZE_CENTER_TEXT: int = 170
 
     ScreenPrints.display_header("INFORMAÇÕES DO DOADOR")
-    print("\n" * 4)
-    print("\n", "[ 1 ] — PESSOA FÍSICA".center(SIZE_CENTER_TEXT))
-    print("\n", "[ 2 ] — PESSOA JURÍDICA".center(SIZE_CENTER_TEXT))
-
-    print("\n" * 5, ("-=" * 40).center(SIZE_CENTER_TEXT))
+    print("\n" * 1)
+    ScreenPrints.get_display_option("1", "PESSOA FÍSICA")
+    ScreenPrints.get_display_option("2", "PESSOA JURÍDICA")
+    print("\n" * 4, ("-=" * 40).center(SIZE_CENTER_TEXT))
     print(" " * 50, end="* ")
 
 
