@@ -13,3 +13,4 @@ if __name__ == '__main__':
         user_choice: str = MainMenu.inicialize()
 
     Report.final_report(data_base)
+
